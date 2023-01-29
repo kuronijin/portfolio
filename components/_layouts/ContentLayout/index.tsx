@@ -1,42 +1,45 @@
 import {
-  FC,
-  ReactHTML,
-  ReactNode,
+  type FC,
+  type PropsWithChildren,
   memo,
-  createElement,
 } from 'react';
+import styled from 'styled-components';
 
-import useStyles from './ContentLayout.styles';
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @media (max-width: 1400px) {
+    padding: 0 50px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0 40px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 16px;
+  }
+`;
 
-interface ContentLayoutClassesProps {
-  root?: string;
-  content?: string;
-}
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 1400px;
+`;
 
-interface ContentLayoutProps {
-  className?: string;
-  classes?: ContentLayoutClassesProps;
-  component?: keyof ReactHTML;
-  children: ReactNode;
-}
-
-const ContentLayout: FC<ContentLayoutProps> = ({
-  className = '',
-  classes: {
-    root = '',
-    content = '',
-  } = {},
+const ContentLayout: FC<PropsWithChildren> = ({
   children,
-  component = 'div',
 }) => {
-  const { classes, cx } = useStyles();
-
-  return createElement(
-    component,
-    { className: cx(classes.root, className, root) },
-    <div className={cx(classes.contentWrapper, content)}>
-      {children}
-    </div>,
+  return (
+    <Wrapper>
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
+    </Wrapper>
   );
 };
 

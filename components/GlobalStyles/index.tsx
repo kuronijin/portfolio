@@ -1,32 +1,46 @@
 import { createGlobalStyle } from 'styled-components';
 
+// :root {
+//   --bg-primary: #f3f4f5;
+//   --bg-secondary: #e3e3e3;
+//   --fg: #000;
+// }
+
 const GlobalStyle = createGlobalStyle`
   :root {
+    --bg-primary: #f3f4f5;
+    --bg-secondary: #e3e3e3;
     --fg: #000;
-    --bg: #fff;
   }
 
   [data-theme="dark"] {
+    --bg-primary: #181818;
+    --bg-secondary: #121210;
     --fg: #fff;
-    --bg: #000;
   }
 
   html,
   body {
     min-height: 100vh;
-    padding: 0;
-    margin: 0;
     color: var(--fg);
-    background-color: var(--bg);
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: var(--bg-primary);
     transition: background-color 0.5s ease;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  a:hover,
+  button:hover {
+    cursor: pointer;
   }
   a {
     color: inherit;
     text-decoration: none;
   }
   * {
+    position: relative;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 `;

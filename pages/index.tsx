@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
 import { useCallback } from 'react';
-import styled from 'styled-components';
 import { useTheme } from 'next-themes';
+import styled from 'styled-components';
+
+import { ContentLayout } from 'components/_layouts';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -19,15 +21,13 @@ const HomePage: NextPage = () => {
   );
 
   return (
-    <div>
-      <div>
-        <Title>
-          Title
-          {/* {theme.changed ? 'Saved theme' : 'Default theme'} */}
-        </Title>
-        <button onClick={toggleTheme}>toggle theme</button>
-      </div>
-    </div>
+    <ContentLayout>
+      <Title>
+        Title
+        {/* {theme.changed ? 'Saved theme' : 'Default theme'} */}
+      </Title>
+      <button onClick={toggleTheme}>toggle theme</button>
+    </ContentLayout>
   );
 };
 
