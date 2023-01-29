@@ -1,20 +1,46 @@
 import { createGlobalStyle } from 'styled-components';
 
+// :root {
+//   --bg-primary: #f3f4f5;
+//   --bg-secondary: #e3e3e3;
+//   --fg: #000;
+// }
+
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --bg-primary: #f3f4f5;
+    --bg-secondary: #e3e3e3;
+    --fg: #000;
+  }
+
+  [data-theme="dark"] {
+    --bg-primary: #181818;
+    --bg-secondary: #121210;
+    --fg: #fff;
+  }
+
   html,
   body {
-    padding: 0;
-    margin: 0;
-    color: ${({ theme }) => theme.palette.common.black};
-    background-color: ${({ theme }) => theme.palette.common.white};
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    min-height: 100vh;
+    color: var(--fg);
+    background: var(--bg-primary);
+    transition: background-color 0.5s ease;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  a:hover,
+  button:hover {
+    cursor: pointer;
   }
   a {
     color: inherit;
     text-decoration: none;
   }
   * {
+    position: relative;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 `;

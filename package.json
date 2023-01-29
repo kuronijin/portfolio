@@ -11,8 +11,8 @@
   "dependencies": {
     "@next/font": "13.1.2",
     "@storeon/crosstab": "^1.0.2",
-    "@storeon/localstorage": "^1.5.0",
     "next": "^13.1.6",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "storeon": "^3.1.5",

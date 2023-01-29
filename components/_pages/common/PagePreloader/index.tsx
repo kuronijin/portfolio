@@ -15,7 +15,6 @@ const PagePreloader: FC = () => {
     preload,
   } = useStoreon(
     'preload',
-    'theme',
   );
 
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -57,7 +56,6 @@ const PagePreloader: FC = () => {
   return (
     <div className={`${classes.preloader} ${classes.show}`} ref={preloaderRef}>
       <p>Preloader</p>
-      <button onClick={() => dispatch('toggleThemeMode')}>toggle</button>
       <button onClick={() => dispatch('setShowPreload', false)}>change</button>
     </div>
   );
