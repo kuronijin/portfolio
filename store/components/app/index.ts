@@ -3,7 +3,7 @@ import { StoreonModule } from 'storeon';
 import { ThemeMode } from 'types';
 
 interface ThemeState {
-  mode: ThemeMode | null;
+  mode: ThemeMode;
   changed: boolean;
 }
 
@@ -24,7 +24,9 @@ export interface AppEvents {
 const appModule: StoreonModule<AppState, AppEvents> = (store) => {
   store.on('@init', () => ({
     theme: {
-      mode: null,
+      mode: typeof window !== 'undefined' && window?.matchMedia('(prefers-color-scheme: dark)')?.matches
+        ? ThemeMode.Dark
+        : ThemeMode.Light,
       changed: false,
     },
     preload: {

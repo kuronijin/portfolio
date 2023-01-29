@@ -14,7 +14,17 @@ import storeModules, {
 
 const store = createStoreon<CombinedState, CombinedEvents>([
   ...storeModules,
-  persistState(['theme']),
+  persistState(
+    ['theme'],
+    {
+      serializer: (state) => {
+        if (!state?.theme?.changed) {
+          delete state.theme;
+        }
+        return JSON.stringify(state);
+      }
+    },
+  ),
   ...(
     typeof window !== 'undefined' ? [
       crossTab({ filter: (event) => crossTabEvents.includes(event) }),

@@ -1,1 +1,3 @@
-export { default as useTheme } from './useTheme';
+import useTheme from './useTheme';
+
+export { useTheme };

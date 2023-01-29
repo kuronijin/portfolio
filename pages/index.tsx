@@ -9,16 +9,14 @@ const Title = styled.h1`
 `;
 
 const HomePage: NextPage = () => {
-  console.log('Home rerender');
-
   const { dispatch, theme } = useStoreon('theme');
-  console.log(`This is ---> theme`, theme);
 
   return (
     <div>
       <div>
         <Title>
-          {theme.changed ? 'Saved theme' : 'Default theme'}
+          Title
+          {/* {theme.changed ? 'Saved theme' : 'Default theme'} */}
         </Title>
         <button onClick={() => dispatch('toggleThemeMode')}>toggle theme</button>
       </div>
