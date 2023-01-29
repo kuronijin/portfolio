@@ -11,6 +11,10 @@ export interface CombinedEvents
   extends AppEvents {
 }
 
+export const crossTabEvents: PropertyKey[] = [
+  'toggleThemeMode',
+];
+
 const storeModules = [
   appModule,
 ];

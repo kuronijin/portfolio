@@ -2,53 +2,54 @@ import { StoreonModule } from 'storeon';
 
 import { ThemeMode } from 'types';
 
-import {
-  getLocalStorageValue,
-  setLocalStorageValue,
-} from 'utils';
-
 interface ThemeState {
-  mode: ThemeMode;
+  mode: ThemeMode | null;
+  changed: boolean;
+}
+
+interface PreloadState {
+  show: boolean;
 }
 
 export interface AppState {
   theme: ThemeState;
-}
-
-export interface SetThemeModePayload {
-
+  preload: PreloadState;
 }
 
 export interface AppEvents {
-  changeThemeMode: ThemeMode;
-  setThemeMode: ThemeMode;
+  toggleThemeMode: void;
+  setShowPreload: boolean;
 }
 
 const appModule: StoreonModule<AppState, AppEvents> = (store) => {
-  store.on('@init', () => {
-    const themeMode = getLocalStorageValue('theme_mode') as ThemeMode;
+  store.on('@init', () => ({
+    theme: {
+      mode: null,
+      changed: false,
+    },
+    preload: {
+      show: true,
+    },
+  }));
 
-    return {
-      theme: {
-        mode: themeMode || ThemeMode.Light,
-      },
-    };
-  });
+  store.on('toggleThemeMode', (state) => ({
+    ...state,
+    theme: {
+      ...state.theme,
+      changed: true,
+      mode: state.theme.mode === ThemeMode.Light
+        ? ThemeMode.Dark
+        : ThemeMode.Light,
+    },
+  }));
 
-  store.on('changeThemeMode', (state, mode) => {
-    store.dispatch('setThemeMode', mode);
-    setLocalStorageValue({ theme_mode: mode });
-  });
-
-  store.on('setThemeMode', (state, mode) => {
-    return {
-      ...state,
-      theme: {
-        ...state.theme,
-        mode,
-      },
-    };
-  });
+  store.on('setShowPreload', (state, show) => ({
+    ...state,
+    preload: {
+      ...state.preload,
+      show,
+    },
+  }));
 };
 
 export default appModule;

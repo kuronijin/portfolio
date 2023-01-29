@@ -1,0 +1,17 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  display: none;
+  /*background: #272727;*/
+  background: #F9F9F9;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  opacity: 0;
+}
