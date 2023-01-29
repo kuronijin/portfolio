@@ -1,14 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --fg: #000;
+    --bg: #fff;
+  }
+
+  [data-theme="dark"] {
+    --fg: #fff;
+    --bg: #000;
+  }
+
   html,
   body {
+    min-height: 100vh;
     padding: 0;
     margin: 0;
-    color: ${({ theme }) => theme.palette.common.black};
-    background-color: ${({ theme }) => theme.palette.common.white};
+    color: var(--fg);
+    background-color: var(--bg);
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    transition: background-color 0.5s ease;
   }
   a {
     color: inherit;
