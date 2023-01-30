@@ -9,13 +9,13 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   :root {
     --bg-primary: #f3f4f5;
-    --bg-secondary: #e3e3e3;
+    --bg-secondary: #181818;
     --fg: #000;
   }
 
   [data-theme="dark"] {
     --bg-primary: #181818;
-    --bg-secondary: #121210;
+    --bg-secondary: #121212;
     --fg: #fff;
   }
 

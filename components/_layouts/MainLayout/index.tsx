@@ -4,6 +4,8 @@ import {
 } from 'react';
 import styled from 'styled-components';
 
+import Header from 'components/Header';
+
 const Layout = styled.div`
   min-height: 100vh;
   display: flex;
@@ -13,6 +15,7 @@ const Layout = styled.div`
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Layout>
+      <Header />
       <main>
         {children}
       </main>
