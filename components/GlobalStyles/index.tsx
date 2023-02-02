@@ -6,16 +6,20 @@ import { createGlobalStyle } from 'styled-components';
 //   --fg: #000;
 // }
 
+// #191919
+// #1c1d1c
+
 const GlobalStyle = createGlobalStyle`
   :root {
     --bg-primary: #f3f4f5;
-    --bg-secondary: #181818;
+    --bg-secondary: #e3e3e3;
+    --bg-header: #111111;
     --fg: #000;
   }
 
   [data-theme="dark"] {
-    --bg-primary: #181818;
-    --bg-secondary: #121212;
+    --bg-primary: #202020;
+    --bg-secondary: #1e1e1e;
     --fg: #fff;
   }
 
@@ -24,9 +28,11 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     color: var(--fg);
     background: var(--bg-primary);
-    transition: background-color 0.5s ease;
+    transition: background 0.5s ease;
+    z-index: 0;
   }
   body {
+    min-height: 200vh;
     overflow-x: hidden;
   }
   a:hover,

@@ -4,10 +4,26 @@ import {
   useEffect,
   useRef,
 } from 'react';
+import styled from 'styled-components';
 
 import { useStoreon } from 'store';
 
-import classes from './PagePreloader.module.css';
+const PreloaderContainer = styled.div`
+  position: fixed;
+  inset: 0;
+  display: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  zIndex: 1000;
+  
+  .show {
+    display: block;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+`;
 
 const PagePreloader: FC = () => {
   const {
@@ -25,7 +41,7 @@ const PagePreloader: FC = () => {
 
       if (preloaderElement) {
         const onAnimationEnd = () => {
-          preloaderElement.classList.remove(classes.show);
+          preloaderElement.classList.remove('show');
         };
 
         preloaderElement.addEventListener('transitionend', onAnimationEnd);
@@ -46,7 +62,7 @@ const PagePreloader: FC = () => {
         const preloaderElement = preloaderRef.current;
 
         if (preloaderElement) {
-          preloaderElement.classList.add(classes.hidden);
+          preloaderElement.classList.add('hidden');
         }
       }
     },
@@ -54,10 +70,10 @@ const PagePreloader: FC = () => {
   );
 
   return (
-    <div className={`${classes.preloader} ${classes.show}`} ref={preloaderRef}>
+    <PreloaderContainer ref={preloaderRef}>
       <p>Preloader</p>
       <button onClick={() => dispatch('setShowPreload', false)}>change</button>
-    </div>
+    </PreloaderContainer>
   );
 };
 

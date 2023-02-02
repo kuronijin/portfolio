@@ -5,6 +5,10 @@ import {
 } from 'react';
 import styled from 'styled-components';
 
+interface ContentLayoutProps {
+  className?: string;
+}
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -31,12 +35,13 @@ const ContentWrapper = styled.div`
   max-width: 1400px;
 `;
 
-const ContentLayout: FC<PropsWithChildren> = ({
+const ContentLayout: FC<PropsWithChildren<ContentLayoutProps>> = ({
+  className,
   children,
 }) => {
   return (
     <Wrapper>
-      <ContentWrapper>
+      <ContentWrapper className={className}>
         {children}
       </ContentWrapper>
     </Wrapper>

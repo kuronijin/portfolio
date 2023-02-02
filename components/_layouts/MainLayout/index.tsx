@@ -5,9 +5,11 @@ import {
 import styled from 'styled-components';
 
 import Header from 'components/Header';
+import { PagePreloader } from '../../_pages/common';
 
 const Layout = styled.div`
   min-height: 100vh;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
 `;
